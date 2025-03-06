@@ -23,16 +23,26 @@ app.get("/leads", async (req, res) => {
   res.json(managers);
 });
 
-app.post("/lead", async (req, res) => {
+app.post("/leads", async (req, res) => {
   const { name, email, status } = req.body;
-  const manager = await prisma.lead.create({
-    data: {
-      name,
-      email,
-      status,
+  const leadManager = await prisma.lead.findUnique({
+    where: {
+      email: email,
     },
   });
-  res.json(manager);
+
+  if (leadManager) {
+    res.json("Email already exists");
+  } else {
+    const manager = await prisma.lead.create({
+      data: {
+        name,
+        email,
+        status,
+      },
+    });
+    res.json(manager);
+  }
 });
 
 const server = app.listen(EXPRESS_PORT, () =>

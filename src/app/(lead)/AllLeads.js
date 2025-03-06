@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const AllLeads = () => {
+const AllLeads = ({ leads }) => {
   return (
     <div className="p-5 flex flex-col gap-5">
       <div className="flex justify-between items-center">
@@ -17,27 +17,22 @@ const AllLeads = () => {
         <table className="table-auto w-full">
           <thead>
             <tr className="">
-              <th>Song</th>
-              <th>Artist</th>
-              <th>Year</th>
+              <th>Number</th>
+              <th>Name</th>
+              <th>Email Address</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-              <td>Malcolm Lockyer</td>
-              <td>1961</td>
-            </tr>
-            <tr>
-              <td>Witchy Woman</td>
-              <td>The Eagles</td>
-              <td>1972</td>
-            </tr>
-            <tr>
-              <td>Shining Star</td>
-              <td>Earth, Wind, and Fire</td>
-              <td>1975</td>
-            </tr>
+            {leads.length > 0 &&
+              leads.map((lead, index) => (
+                <tr key={lead.id}>
+                  <td>{index + 1}</td>
+                  <td>{lead.name}</td>
+                  <td>{lead.email}</td>
+                  <td>{lead.status}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -1,8 +1,13 @@
 "use client";
 
 import { addLead } from "@/api/lead";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const AddLead = ({ baseURL }) => {
+  const [message, setMessage] = useState("");
+  const router = useRouter();
+
   const handleSubmit = async (e) => {
     const inputName = e.target;
     const data = {
@@ -12,7 +17,12 @@ const AddLead = ({ baseURL }) => {
     };
 
     const lead = await addLead({ data, baseURL });
-    console.log("Lead", lead);
+
+    if (typeof lead === "object") {
+      router.push("/");
+    } else {
+      setMessage(`${lead}!`);
+    }
   };
 
   return (
@@ -103,6 +113,10 @@ const AddLead = ({ baseURL }) => {
                       />
                     </svg>
                   </div>
+                </div>
+
+                <div className="sm:col-span-4 ">
+                  <p className="text-red-500">{message}</p>
                 </div>
               </div>
             </div>
