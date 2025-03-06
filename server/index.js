@@ -1,10 +1,21 @@
 import express from "express";
 import cors from "cors";
+import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 
 const EXPRESS_PORT = 3001;
 
-const prisma = new PrismaClient();
+let prisma;
+
+if (process.env.NODE_ENV === "production") {
+  prisma = new PrismaClient();
+} else {
+  if (!global.prisma) {
+    global.prisma = new PrismaClient();
+  }
+  prisma = global.prisma;
+}
+
 const app = express();
 
 app.use(express.json());
