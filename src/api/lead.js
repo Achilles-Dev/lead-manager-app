@@ -1,4 +1,4 @@
-export const baseURL = process.env.SERVER_URL;
+export const baseURL = process.env.SERVER_URL ?? "http://localhost:3001";
 
 export const getLeads = async () => {
   const data = await fetch(`${baseURL}/leads`);
