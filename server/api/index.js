@@ -50,4 +50,4 @@ app.post("/leads", async (req, res) => {
 //   console.log(`Web Server is listening on port ${EXPRESS_PORT || 3001}!`)
 // );
 
-export default server;
+export default app;
