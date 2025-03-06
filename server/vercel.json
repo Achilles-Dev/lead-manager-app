@@ -5,7 +5,7 @@
       "src": "api/index.js",
       "use": "@vercel/node",
       "config": {
-        "buildCommand": "npm run vercel-build"
+        "buildCommand": "npx prisma generate && npm install"
       }
     }
   ],
