@@ -1,11 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const { PrismaClient } = require("@prisma/client");
+import express from "express";
+import cors from "cors";
 
-const app = express();
-const prisma = new PrismaClient();
+import { PrismaClient } from "@prisma/client";
 
 const EXPRESS_PORT = 3001;
+
+const prisma = new PrismaClient();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -45,14 +46,8 @@ app.post("/leads", async (req, res) => {
   }
 });
 
-// Handle local development vs Vercel deployment
-if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
-  app.listen(EXPRESS_PORT, () =>
-    console.log(
-      `Web Server is listening on http://localhost:${EXPRESS_PORT || 3001}`
-    )
-  );
-}
+// const server = app.listen(EXPRESS_PORT, () =>
+//   console.log(`Web Server is listening on port ${EXPRESS_PORT || 3001}!`)
+// );
 
-// Export the app for Vercel
-module.exports = app;
+export default server;
