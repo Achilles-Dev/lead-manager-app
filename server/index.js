@@ -1,10 +1,22 @@
 import express from "express";
+import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 
 const EXPRESS_PORT = 3001;
 
 const prisma = new PrismaClient();
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(
+  cors({
+    origin: "*",
+    methods: "*",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 app.get("/leads", async (req, res) => {
   const managers = await prisma.lead.findMany();
