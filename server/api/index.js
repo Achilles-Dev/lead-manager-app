@@ -45,6 +45,8 @@ app.post("/leads", async (req, res) => {
   }
 });
 
-const server = app.listen(EXPRESS_PORT, () =>
-  console.log(`Web Server is listening on port ${EXPRESS_PORT || 3001}!`)
-);
+// const server = app.listen(EXPRESS_PORT, () =>
+//   console.log(`Web Server is listening on port ${EXPRESS_PORT || 3001}!`)
+// );
+
+export default server;
