@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import "dotenv/config";
 
 import { PrismaClient } from "@prisma/client";
 
@@ -48,13 +49,13 @@ app.post("/leads", async (req, res) => {
 
 // Handle local development vs Vercel deployment
 
-// if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
-//   app.listen(EXPRESS_PORT, () => {
-//     console.log(
-//       `Server is running on http://localhost:${EXPRESS_PORT || 3001}`
-//     );
-//   });
-// }
+if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
+  app.listen(EXPRESS_PORT, () => {
+    console.log(
+      `Server is running on http://localhost:${EXPRESS_PORT || 3001}`
+    );
+  });
+}
 
 // Export the app for Vercel
 export default app;

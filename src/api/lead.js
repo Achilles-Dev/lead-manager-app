@@ -3,7 +3,11 @@ export const baseURL = process.env.SERVER_URL;
 export const getLeads = async () => {
   const data = await fetch(`${baseURL}/leads`);
   const leads = await data.json();
-  return leads;
+  if (leads) {
+    return leads;
+  } else {
+    return [];
+  }
 };
 
 export const addLead = async ({ data, baseURL }) => {

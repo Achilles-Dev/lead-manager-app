@@ -2,11 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.js",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "npx prisma generate && npm install"
-      }
+      "src": "*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
