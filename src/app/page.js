@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="h-screen">
       <Suspense fallback={<div>Loading...</div>}>
-        <AllLeads leads={leads} />
+        <AllLeads leadsPromise={leads} />
       </Suspense>
     </div>
   );

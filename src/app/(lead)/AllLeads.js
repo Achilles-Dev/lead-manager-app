@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { use } from "react";
 
-const AllLeads = ({ leads }) => {
-  const leadManagers = use(leads);
+const AllLeads = ({ leadsPromise }) => {
+  const leadManagers = use(leadsPromise);
   console.log(leadManagers);
   return (
     <div className="p-5 flex flex-col gap-5">

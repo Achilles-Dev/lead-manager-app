@@ -2,11 +2,13 @@
 
 import { addLead } from "@/api/lead";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { use, useState } from "react";
 
-const AddLead = ({ baseURL }) => {
+const AddLead = ({ baseURL, leadsPromise }) => {
   const [message, setMessage] = useState("");
   const router = useRouter();
+  const leads = use(leadsPromise);
+  console.log(leads);
 
   const handleSubmit = async (e) => {
     const inputName = e.target;

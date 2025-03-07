@@ -1,10 +1,11 @@
-import { baseURL } from "@/api/lead";
+import { baseURL, getLeads } from "@/api/lead";
 import AddLead from "./AddLead";
 
-export default async function LeadPage() {
+export default function LeadPage() {
+  const leads = getLeads(baseURL);
   return (
     <div className="p-5 flex flex-col gap-5">
-      <AddLead baseURL={baseURL} />
+      <AddLead baseURL={baseURL} leadsPromise={leads} />
     </div>
   );
 }
