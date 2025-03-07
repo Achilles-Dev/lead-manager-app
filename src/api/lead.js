@@ -1,7 +1,7 @@
 export const baseURL = process.env.SERVER_URL;
 
 export const getLeads = async (baseURL) => {
-  const data = await fetch(`${baseURL}/leads`);
+  const data = await fetch(`${baseURL}/leads`, { cache: "no-store" });
   const leads = await data.json();
   if (leads) {
     return leads;

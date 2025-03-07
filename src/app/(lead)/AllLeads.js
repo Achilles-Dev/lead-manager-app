@@ -5,7 +5,7 @@ import { use } from "react";
 
 const AllLeads = ({ leadsPromise }) => {
   const leadManagers = use(leadsPromise);
-  console.log(leadManagers);
+
   return (
     <div className="p-5 flex flex-col gap-5">
       <div className="flex justify-between items-center">
