@@ -1,12 +1,15 @@
 import { baseURL, getLeads } from "@/api/lead";
 import AllLeads from "./(lead)/AllLeads";
+import { Suspense } from "react";
 
-export default async function Home() {
-  const leads = await getLeads(baseURL);
+export default function Home() {
+  const leads = getLeads(baseURL);
 
   return (
     <div className="h-screen">
-      <AllLeads leads={leads} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <AllLeads leads={leads} />
+      </Suspense>
     </div>
   );
 }

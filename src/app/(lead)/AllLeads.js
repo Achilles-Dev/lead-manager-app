@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { use } from "react";
 
 const AllLeads = ({ leads }) => {
+  const leadManagers = use(leads);
+  console.log(leadManagers);
   return (
     <div className="p-5 flex flex-col gap-5">
       <div className="flex justify-between items-center">
@@ -24,8 +27,8 @@ const AllLeads = ({ leads }) => {
             </tr>
           </thead>
           <tbody>
-            {leads.length > 0 &&
-              leads.map((lead, index) => (
+            {leadManagers.length > 0 &&
+              leadManagers.map((lead, index) => (
                 <tr key={lead.id}>
                   <td>{index + 1}</td>
                   <td>{lead.name}</td>
